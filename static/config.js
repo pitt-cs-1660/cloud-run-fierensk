@@ -17,5 +17,3 @@ const config = {
   apiKey: 'AIzaSyB2vjwH2d7fdt18k7YtwPmIZJcXGe7Hk3g',
   authDomain: 'cc-assns.firebaseapp.com',
 };
-
-export default firebaseConfig;
