@@ -114,13 +114,24 @@ async function vote(team) {
     // Retrieve JWT to identify the user to the Identity Platform service.
     // Returns the current token if it has not expired. Otherwise, this will
     // refresh the token and return a new one.
-    try {
-      const token = await createIdToken();
+    try {        
+      const formData = new URLSearchParams({team});
 
-      /*
-       * ++++ YOUR CODE HERE ++++
-       */
-      window.alert(`Not implemented yet!`);
+      const response = await fetch('/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+          'Authorization': `Bearer ${token}`
+        },
+        body: formData
+      });
+
+      if (!response.ok) {
+        throw new Error(`${response.status}`);
+      }
+
+      console.log(`Success!`);
+      window.alert('Success!');
 
     } catch (err) {
       console.log(`Error when submitting vote: ${err}`);
