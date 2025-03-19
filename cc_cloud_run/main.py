@@ -60,8 +60,9 @@ async def create_vote(team: Annotated[str, Form()]):
         "team": team,
         "time_cast": datetime.datetime.utcnow().isoformat()
     })
+
     # create a new vote document in firestore
-    return {"detail": "Not implemented yet!"}
+    return {"detail": "Vote success!"}
 
     # ====================================
     # ++++ STOP CODE ++++
