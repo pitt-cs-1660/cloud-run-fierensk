@@ -115,7 +115,10 @@ async function vote(team) {
     // Returns the current token if it has not expired. Otherwise, this will
     // refresh the token and return a new one.
     try {        
-      const formData = new URLSearchParams({team});
+      //get da token 
+      const token = await createIdToken();
+
+      const voteInfo = new URLSearchParams({team});
 
       const response = await fetch('/', {
         method: 'POST',
@@ -123,7 +126,7 @@ async function vote(team) {
           'Content-Type': 'application/x-www-form-urlencoded',
           'Authorization': `Bearer ${token}`
         },
-        body: formData
+        body: voteInfo
       });
 
       if (!response.ok) {

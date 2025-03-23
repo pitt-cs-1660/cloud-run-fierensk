@@ -31,11 +31,14 @@ async def read_root(request: Request):
     tabs_count = 0
     spaces_count = 0
     for v in votes:
-        vote_data.append(v.to_dict())
-        if v.to_dict().key() == "TABS":
+        vote_dict = v.to_dict()
+        vote_data.append(vote_dict)
+        team = vote_dict.get("team")
+        
+        if team == "TABS":
             tabs_count += 1
-        if v.to_dict().key() == "SPACES":
-            spaces_count +=1
+        elif team == "SPACES":
+            spaces_count += 1
 
     # ====================================
     # ++++ STOP CODE ++++
